@@ -2,11 +2,11 @@
 
 > Nuke backgrounds from any image. 100% client-side. Zero uploads. Zero BS.
 
-[![Version](https://img.shields.io/badge/version-2.12.0-brightgreen.svg)](https://github.com/yocreoquesi/nukebg/releases)
+[![Version](https://img.shields.io/badge/version-2.12.0-brightgreen.svg)](https://github.com/9oll/nukebg/releases)
 [![License: GPL-3.0](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Client-Side](https://img.shields.io/badge/Processing-100%25%20Client--Side-green.svg)](#-privacy)
 
-[Use NukeBG](https://nukebg.app) | [GitHub](https://github.com/yocreoquesi/nukebg) | [Reactor — costs & runtime](https://nukebg.app/#reactor)
+[Use NukeBG](https://nukebg.app) | [GitHub](https://github.com/9oll/nukebg) | [Reactor — costs & runtime](https://nukebg.app/#reactor)
 
 ---
 
@@ -63,7 +63,7 @@ $ open https://nukebg.app
 **Run locally (Node):**
 
 ```bash
-$ git clone https://github.com/yocreoquesi/nukebg.git
+$ git clone https://github.com/9oll/nukebg.git
 $ cd nukebg
 $ npm install
 $ npm run dev        # dev server at localhost:5173
@@ -78,7 +78,7 @@ security headers as the deployed site. Useful to validate nginx config before
 shipping, or to self-host.
 
 ```bash
-$ git clone https://github.com/yocreoquesi/nukebg.git
+$ git clone https://github.com/9oll/nukebg.git
 $ cd nukebg
 $ docker compose up -d --build    # build + run detached
 $ open http://localhost:8080      # -> nukebg served via nginx
@@ -202,15 +202,15 @@ $ cat CONTRIBUTING.md
 
 Contributions welcome. Read the [Contributing Guide](CONTRIBUTING.md) before submitting a PR.
 
-[Report Bug](https://github.com/yocreoquesi/nukebg/issues/new?template=bug_report.md) | [Request Feature](https://github.com/yocreoquesi/nukebg/issues/new?template=feature_request.md)
+[Report Bug](https://github.com/9oll/nukebg/issues/new?template=bug_report.md) | [Request Feature](https://github.com/9oll/nukebg/issues/new?template=feature_request.md)
 
 ## > support
 
 If NukeBG saves you time, consider keeping the reactor running:
 
-[![Sponsor on GitHub](https://img.shields.io/badge/Sponsor-GitHub%20Sponsors-ea4aaa?logo=github-sponsors&logoColor=white&style=for-the-badge)](https://github.com/sponsors/yocreoquesi)
+[![Sponsor on GitHub](https://img.shields.io/badge/Sponsor-GitHub%20Sponsors-ea4aaa?logo=github-sponsors&logoColor=white&style=for-the-badge)](https://github.com/sponsors/o9ll)
 
-[![Ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/yocreoquesi)
+[![Ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/o99)
 
 See where the time and money go: [/#reactor](https://nukebg.app/#reactor) — public sunk-cost + monthly burn breakdown.
 

@@ -51,7 +51,7 @@ anonymous (counted, no name).
 
 Either way, thanks again. Code keeps shipping because of this.
 
-— Antonio (yocreoquesi)
+— o9 (o9ll)
 ```
 
 ### Español
@@ -80,7 +80,7 @@ Por defecto si no respondés en ~14 días, te listo como anónimo
 De cualquier manera, gracias de nuevo. El código sigue avanzando
 gracias a esto.
 
-— Antonio (yocreoquesi)
+— o9 (o9ll)
 ```
 
 > Other locales (fr / de / pt / zh) are operational, not user-facing.

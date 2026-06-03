@@ -27,17 +27,17 @@ const COPY: Record<CtaKey, CtaCopyKeys> = {
   'first-star': {
     text: 'cta.firstStar.text',
     cta: 'cta.firstStar.cta',
-    href: 'https://github.com/yocreoquesi/nukebg',
+    href: 'https://github.com/9oll/nukebg',
   },
   'five-tip': {
     text: 'cta.fiveTip.text',
     cta: 'cta.fiveTip.cta',
-    href: 'https://ko-fi.com/yocreoquesi',
+    href: 'https://ko-fi.com/o99',
   },
   'ten-review': {
     text: 'cta.tenReview.text',
     cta: 'cta.tenReview.cta',
-    href: 'https://github.com/yocreoquesi/nukebg/discussions',
+    href: 'https://github.com/9oll/nukebg/discussions',
   },
 };
 
@@ -202,7 +202,7 @@ function maybeShowOnLoad(host: ArPostCta): void {
     setTimeout(() => {
       // Use the public API by setting a private field via the same
       // method the event handler does
-      (host as unknown as { show: (k: CtaKey) => void }).show(picked);
+      (host as unknown as { show: (k: CtaKey) => void; }).show(picked);
     }, 1500);
   }
 }

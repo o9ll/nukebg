@@ -118,9 +118,9 @@ class ArReactor extends HTMLElement {
           <h2 class="block-title">── ${t('reactor.timeBreakdown')} ──</h2>
           <dl class="breakdown">
             ${TIME_BREAKDOWN.map(
-              (b) =>
-                `<dt>${t('reactor.cat.' + b.key)}</dt><dd><span class="hours">${b.hours} h</span> <span class="pct">(${b.percent}%)</span></dd>`,
-            ).join('')}
+      (b) =>
+        `<dt>${t('reactor.cat.' + b.key)}</dt><dd><span class="hours">${b.hours} h</span> <span class="pct">(${b.percent}%)</span></dd>`,
+    ).join('')}
           </dl>
         </section>
 
@@ -138,7 +138,7 @@ class ArReactor extends HTMLElement {
         <section class="block">
           <h2 class="block-title">── ${t('reactor.recentSupporters')} ──</h2>
           ${this.renderSupporters()}
-          <a class="cta" href="https://ko-fi.com/yocreoquesi" target="_blank" rel="noopener noreferrer">☕ ${t('reactor.tipCta')}</a>
+          <a class="cta" href="https://ko-fi.com/o99" target="_blank" rel="noopener noreferrer">☕ ${t('reactor.tipCta')}</a>
         </section>
 
         <section class="block prose methodology" id="methodology">
@@ -169,9 +169,9 @@ class ArReactor extends HTMLElement {
     const anonRow =
       anonymous_count > 0
         ? `<p class="muted anon">${t('reactor.anonymousLine', {
-            count: String(anonymous_count),
-            total: `€${anonymous_total_eur}`,
-          })}</p>`
+          count: String(anonymous_count),
+          total: `€${anonymous_total_eur}`,
+        })}</p>`
         : '';
     return `
       <table class="supporters">

@@ -170,7 +170,7 @@ function showConsoleLogo(): void {
 
     Your images never leave this machine.
     Don't believe us? Read the source:
-    https://github.com/yocreoquesi/nukebg
+    https://github.com/9oll/nukebg
 
     > ready_
 `;
@@ -590,7 +590,7 @@ function initShakeDetection(): void {
   }
 
   // Firefox/Safari mobile require explicit permission for DeviceMotionEvent
-  const dme = DeviceMotionEvent as unknown as { requestPermission?: () => Promise<string> };
+  const dme = DeviceMotionEvent as unknown as { requestPermission?: () => Promise<string>; };
   if (typeof dme.requestPermission === 'function') {
     // Request on first user interaction (touch)
     const requestOnce = (): void => {

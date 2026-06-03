@@ -331,7 +331,7 @@ that:
 2. **Project license grant** — Your contribution is licensed under
    [GPL-3.0-only](LICENSE) for inclusion in the project.
 3. **Relicense grant** — You additionally grant the project owner
-   ([@yocreoquesi](https://github.com/yocreoquesi)) a perpetual, worldwide,
+   ([@o9ll](https://github.com/o9ll)) a perpetual, worldwide,
    non-exclusive, royalty-free, irrevocable right to relicense your
    contribution under any [OSI-approved license](https://opensource.org/licenses)
    in the future, at the project owner's discretion. This keeps the project's

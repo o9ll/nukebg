@@ -1219,7 +1219,7 @@ export class ArApp extends HTMLElement {
           `**Stage:** \`${stage}\`\n**UA:** ${decodeURIComponent(ua)}\n**Locale:** ${document.documentElement.lang}\n\n<!-- what were you trying to do? drag the image that failed if possible -->`,
         );
         window.open(
-          `https://github.com/yocreoquesi/nukebg/issues/new?title=${title}&body=${body}`,
+          `https://github.com/9oll/nukebg/issues/new?title=${title}&body=${body}`,
           '_blank',
           'noopener',
         );
