@@ -26,7 +26,7 @@ export function isAppInstalled(): boolean {
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker
-      .register('/service-worker.js')
+      .register(`${import.meta.env.BASE_URL}service-worker.js`)
       .then((registration) => {
         // Update detection: when a new SW is waiting, notify the app
         const onUpdateFound = (): void => {

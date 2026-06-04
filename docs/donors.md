@@ -39,7 +39,7 @@ project's monthly burn, which means actual code shipping continues
 a bit longer.
 
 Quick question if you don't mind: I'm building a public supporters
-page on nukebg.app/reactor and I'd love to recognize you. How would
+page on o9ll.github.io/nukebg/reactor and I'd love to recognize you. How would
 you like to appear?
 
   [ ] Public — display name: __________
@@ -67,7 +67,7 @@ del burn mensual del proyecto, lo que significa que el código sigue
 shipeando un poco más.
 
 Una pregunta si no te molesta: estoy armando una página pública de
-supporters en nukebg.app/reactor y me gustaría reconocerte. ¿Cómo te
+supporters en o9ll.github.io/nukebg/reactor y me gustaría reconocerte. ¿Cómo te
 gustaría aparecer?
 
   [ ] Público — nombre a mostrar: __________

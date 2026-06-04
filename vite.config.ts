@@ -2,6 +2,8 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
+  // GitHub Pages project site: https://o9ll.github.io/nukebg/ (set VITE_BASE=/nukebg/ in CI).
+  base: process.env.VITE_BASE || '/',
   build: {
     target: 'es2022',
     outDir: 'dist',

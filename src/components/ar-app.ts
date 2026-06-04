@@ -3,6 +3,7 @@ import type { ImageProcessor } from '../pipeline/image-processor';
 import type { PipelineStage, StageStatus } from '../types/pipeline';
 import type { ModelId } from '../types/worker-messages';
 import { t } from '../i18n';
+import { REPO_URL, siteHostLabel } from '../site';
 import { isAppInstalled } from '../sw-register';
 import { AppInstaller } from '../controllers/app-install';
 import type { ArViewer } from './ar-viewer';
@@ -159,8 +160,7 @@ export class ArApp extends HTMLElement {
           display: none;
         }
         /* Always-visible panel that carries the [STATUS] line, the
-           limitations <details>, the honesty disclaimer and the Ko-fi
-           pitch. Sits below the workspace so it follows the current
+           limitations <details>, the honesty disclaimer. Sits below the workspace so it follows the current
            image (dropzone, processing, result) on screen. Hidden only
            while the advanced editor is open — see .editor-open below. */
         .status-panel {
@@ -441,7 +441,6 @@ export class ArApp extends HTMLElement {
         }
         .dropzone-disabled {
           opacity: 0.4;
-          pointer-events: none;
         }
         /* Full-bleed marquee for the landing — sibling to <section class=hero>.
            Gradient mask fades text at both edges so it never clips mid-word. */
@@ -508,11 +507,10 @@ export class ArApp extends HTMLElement {
         .status-line .status-reactor {
           color: var(--color-accent-primary, #00ff41);
         }
-        /* Honesty + Ko-fi pitch under the status line. Same monospace
-           voice, same tertiary tone as the limitations summary so they
+        /* Honesty under the status line. Same monospace voice,
+           same tertiary tone as the limitations summary so they
            don't fight the dropzone for attention. */
-        .hero-disclaimer,
-        .hero-support {
+        .hero-disclaimer {
           margin: 6px 0 0;
           font-family: 'JetBrains Mono', monospace;
           font-size: 12px;
@@ -523,13 +521,11 @@ export class ArApp extends HTMLElement {
           color: var(--color-text-tertiary, #00b34a);
           opacity: 0.7;
         }
-        .hero-disclaimer a,
-        .hero-support a {
-          color: var(--color-accent-primary, #00ff41);
+        .hero-disclaimer a {
+          color: var(--color-accent-primary, #cdd6f4);
           text-decoration: none;
         }
-        .hero-disclaimer a:hover,
-        .hero-support a:hover {
+        .hero-disclaimer a:hover {
           text-decoration: underline;
         }
         .status-line .status-model {
@@ -949,7 +945,7 @@ export class ArApp extends HTMLElement {
       <!-- Full-bleed marquee outside the main column per design #69.
            Gradient mask fades text in/out at the edges so it never
            clips mid-word the way the old column-scoped marquee did. -->
-      <div class="marquee-bleed" id="precision-marquee-bleed"><span><span class="marquee-half">☢ NUKEBG | DROP. NUKE. DOWNLOAD. | <span data-marquee-runtime>development funded for 0 months — tip to extend runway</span> | nukebg.app ☢</span><span class="marquee-half" aria-hidden="true">☢ NUKEBG | DROP. NUKE. DOWNLOAD. | <span data-marquee-runtime>development funded for 0 months — tip to extend runway</span> | nukebg.app ☢</span></span></div>
+      <div class="marquee-bleed" id="precision-marquee-bleed"><span><span class="marquee-half">☢ NUKEBG | DROP. NUKE. DOWNLOAD. | <span data-marquee-runtime>development funded for 0 months — tip to extend runway</span> | ${siteHostLabel()} ☢</span><span class="marquee-half" aria-hidden="true">☢ NUKEBG | DROP. NUKE. DOWNLOAD. | <span data-marquee-runtime>development funded for 0 months — tip to extend runway</span> | ${siteHostLabel()} ☢</span></span></div>
 
       <section class="hero" id="hero">
         <h1>
@@ -1027,10 +1023,10 @@ export class ArApp extends HTMLElement {
            honesty copy disappear during processing. The
            .status-panel.editor-open rule hides this block while the
            advanced editor is open (the only state where the user
-           actively does NOT want the [STATUS] / Ko-fi noise on screen).
-           Class names and IDs kept (.status-line, .hero-disclaimer,
-           .hero-support) so existing CSS selectors and the regex-based
-           component tests still match. -->
+           actively does NOT want the [STATUS] noise on screen).
+           Class names and IDs kept (.status-line, .hero-disclaimer)
+           so existing CSS selectors and the regex-based component
+           tests still match. -->
       <aside class="status-panel" id="status-panel">
         <p class="status-line" id="status-line">
           <span class="status-tag">[STATUS]</span>
@@ -1045,7 +1041,6 @@ export class ArApp extends HTMLElement {
           </details>
         </p>
         <p class="hero-disclaimer" id="hero-disclaimer">${t('features.disclaimer')}</p>
-        <p class="hero-support" id="hero-support">${t('support.kofi')}</p>
       </aside>
 
       <div
@@ -1150,8 +1145,6 @@ export class ArApp extends HTMLElement {
     }
     const heroDisclaimer = root.querySelector('#hero-disclaimer');
     if (heroDisclaimer) heroDisclaimer.innerHTML = t('features.disclaimer');
-    const heroSupport = root.querySelector('#hero-support');
-    if (heroSupport) heroSupport.innerHTML = t('support.kofi');
     const statusLimSum = root.querySelector('#status-limits-summary');
     if (statusLimSum) statusLimSum.textContent = `# ${t('status.limitations')}`;
     const statusLimBody = root.querySelector('#status-limits-body');
@@ -1219,7 +1212,7 @@ export class ArApp extends HTMLElement {
           `**Stage:** \`${stage}\`\n**UA:** ${decodeURIComponent(ua)}\n**Locale:** ${document.documentElement.lang}\n\n<!-- what were you trying to do? drag the image that failed if possible -->`,
         );
         window.open(
-          `https://github.com/9oll/nukebg/issues/new?title=${title}&body=${body}`,
+          `${REPO_URL}/issues/new?title=${title}&body=${body}`,
           '_blank',
           'noopener',
         );
@@ -1526,7 +1519,7 @@ export class ArApp extends HTMLElement {
 
   /** Toggle the .editor-open class on the persistent status panel.
    *  When the advanced editor is open, the user does not want the
-   *  [STATUS] line / limitations / Ko-fi pitch competing for attention
+   *  [STATUS] line / limitations competing for attention
    *  with the editing surface. Every code path that mutates the
    *  advanced editor's `active` attribute also calls this helper. */
   private setEditorOpen(open: boolean): void {

@@ -21,7 +21,9 @@ import {
   type DonorsFile,
 } from '../utils/reactor-economics';
 
-const DONORS_URL = '/donors.json';
+import { publicPath, REPO_URL } from '../site';
+
+const DONORS_URL = publicPath('donors.json');
 
 const EMPTY_DONORS: DonorsFile = {
   version: 1,
@@ -138,7 +140,7 @@ class ArReactor extends HTMLElement {
         <section class="block">
           <h2 class="block-title">── ${t('reactor.recentSupporters')} ──</h2>
           ${this.renderSupporters()}
-          <a class="cta" href="https://ko-fi.com/o99" target="_blank" rel="noopener noreferrer">☕ ${t('reactor.tipCta')}</a>
+          <a class="cta" href="${REPO_URL}" target="_blank" rel="noopener noreferrer">${t('reactor.tipCta')}</a>
         </section>
 
         <section class="block prose methodology" id="methodology">

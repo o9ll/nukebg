@@ -3,6 +3,50 @@ import { t } from '../i18n';
 import { getBatchLimit } from '../types/batch';
 import { emit, on } from '../lib/event-bus';
 
+/** Build a FileList for handleFiles() from an array of File objects. */
+function toFileList(files: File[]): FileList {
+  const dt = new DataTransfer();
+  for (const f of files) dt.items.add(f);
+  return dt.files;
+}
+
+/**
+ * Collect image files from a drop — desktop file drags, clipboard-style
+ * item lists, and browser image drags (text/uri-list or data: URLs).
+ */
+async function extractImageFilesFromDataTransfer(dt: DataTransfer): Promise<File[]> {
+  const fromFiles = Array.from(dt.files).filter((f) => f.type.startsWith('image/'));
+  if (fromFiles.length > 0) return fromFiles;
+
+  const fromItems: File[] = [];
+  for (let i = 0; i < dt.items.length; i++) {
+    const item = dt.items[i];
+    if (item.kind === 'file' && item.type.startsWith('image/')) {
+      const f = item.getAsFile();
+      if (f) fromItems.push(f);
+    }
+  }
+  if (fromItems.length > 0) return fromItems;
+
+  const uri = (dt.getData('text/uri-list') || dt.getData('text/plain') || '')
+    .split(/[\r\n]+/)
+    .map((s) => s.trim())
+    .find((s) => s.startsWith('http') || s.startsWith('data:image'));
+  if (!uri) return [];
+
+  try {
+    const res = await fetch(uri);
+    const blob = await res.blob();
+    if (!blob.type.startsWith('image/')) return [];
+    const ext = blob.type.split('/')[1]?.split('+')[0] || 'png';
+    const name =
+      uri.startsWith('data:') ? `dropped-image.${ext}` : (uri.split('/').pop()?.split('?')[0] || `dropped-image.${ext}`);
+    return [new File([blob], name, { type: blob.type })];
+  } catch {
+    return [];
+  }
+}
+
 export class ArDropzone extends HTMLElement {
   private fileInput!: HTMLInputElement;
   private dropArea!: HTMLDivElement;
@@ -207,7 +251,7 @@ export class ArDropzone extends HTMLElement {
         input[type="file"] { display: none; }
         .dropzone.dropzone-disabled {
           opacity: 0.4;
-          pointer-events: none;
+          cursor: not-allowed;
         }
         :host(:focus-visible) .dropzone,
         .dropzone:focus-visible {
@@ -260,7 +304,7 @@ export class ArDropzone extends HTMLElement {
         <span class="dz-corner tr" aria-hidden="true">&#9488;</span>
         <span class="dz-corner bl" aria-hidden="true">&#9492;</span>
         <span class="dz-corner br" aria-hidden="true">&#9496;</span>
-        <div class="dz-prompt">nukebg@local:~$ <span class="cmd">drop --image</span></div>
+        <div class="dz-prompt">o9:~$ <span class="cmd">drop --image</span></div>
         <div class="idle-content dz-center">
           <div class="dz-glyph" aria-hidden="true">[ &#8595; ]</div>
           <div class="dz-title" id="dz-title">${t('dropzone.title')}</div>
@@ -325,6 +369,7 @@ export class ArDropzone extends HTMLElement {
     // one of the source options on mobile, so a dedicated camera CTA
     // is unnecessary (#146).
     this.dropArea.addEventListener('click', () => {
+      if (this.dropArea.classList.contains('dropzone-disabled')) return;
       this.fileInput.click();
     });
 
@@ -343,20 +388,50 @@ export class ArDropzone extends HTMLElement {
       }
     });
 
-    // Drag events
-    this.dropArea.addEventListener('dragover', (e) => {
+    // Drag-and-drop — capture on the shadow root so drops on child text
+    // (e.g. "DROP YOUR IMAGE HERE") still cancel the browser's default
+    // navigation. dragenter must be cancelled too or the drop is rejected.
+    const root = this.shadowRoot!;
+    const dragOpts = { signal, capture: true };
+
+    const allowDrop = (e: DragEvent): void => {
       e.preventDefault();
-      this.dropArea.classList.add('dragover');
-    });
-    this.dropArea.addEventListener('dragleave', () => {
-      this.dropArea.classList.remove('dragover');
-    });
-    this.dropArea.addEventListener('drop', (e) => {
-      e.preventDefault();
-      this.dropArea.classList.remove('dragover');
-      const files = e.dataTransfer?.files;
-      if (files && files.length > 0) this.handleFiles(files);
-    });
+      e.stopPropagation();
+      if (e.dataTransfer) e.dataTransfer.dropEffect = 'copy';
+    };
+
+    root.addEventListener(
+      'dragenter',
+      (e) => {
+        allowDrop(e);
+        this.dropArea.classList.add('dragover');
+      },
+      dragOpts,
+    );
+    root.addEventListener(
+      'dragover',
+      (e) => {
+        allowDrop(e);
+        this.dropArea.classList.add('dragover');
+      },
+      dragOpts,
+    );
+    root.addEventListener(
+      'dragleave',
+      (e) => {
+        const related = e.relatedTarget as Node | null;
+        if (related && root.contains(related)) return;
+        this.dropArea.classList.remove('dragover');
+      },
+      dragOpts,
+    );
+    root.addEventListener(
+      'drop',
+      (e) => {
+        void this.onDrop(e);
+      },
+      dragOpts,
+    );
 
     // Paste from clipboard
     document.addEventListener(
@@ -375,6 +450,30 @@ export class ArDropzone extends HTMLElement {
       },
       { signal },
     );
+  }
+
+  private async onDrop(e: DragEvent): Promise<void> {
+    e.preventDefault();
+    e.stopPropagation();
+    this.dropArea.classList.remove('dragover');
+
+    if (this.dropArea.classList.contains('dropzone-disabled')) return;
+
+    const dt = e.dataTransfer;
+    if (!dt) return;
+
+    const files = await extractImageFilesFromDataTransfer(dt);
+    if (files.length > 0) {
+      await this.handleFiles(toFileList(files));
+      return;
+    }
+
+    // Non-image file drops (e.g. PDF) — route through handleFiles so the
+    // format error UX still fires. Browser image URL drags with no CORS
+    // access fall through silently (no navigation — default was cancelled).
+    if (dt.files.length > 0) {
+      await this.handleFiles(dt.files);
+    }
   }
 
   disconnectedCallback(): void {

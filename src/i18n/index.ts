@@ -156,8 +156,7 @@ const translations: Translations = {
     'privacy.tooltip.line3': 'Verify: check Network tab in DevTools.',
 
     // Features
-    'features.disclaimer': 'We\'re <s>perfect</s> honest. Sometimes we miss. Fix it wko-fi.com/o99href="https://github.com/9oll/nukebg/issues" target="_blank" rel="noopener">yell at the repo</a>.',
-    'support.kofi': 'The reactor stays online while caffeine flows. <a href="https://ko-fi.com/o99" target="_blank" rel="noopener">Fuel it on Ko-fi</a>.',
+    'features.disclaimer': 'We\'re <s>perfect</s> honest. Sometimes we miss. Fix it with the editor or <a href="https://github.com/o9ll/nukebg/issues" target="_blank" rel="noopener">yell at the repo</a>.',
     'features.limitations': '\u2192 <strong>Works best with:</strong> clear subjects on contrasting backgrounds, photos, logos, signatures.<br>\u2192 <strong>May struggle with:</strong> hair on busy backgrounds, semi-transparent objects, very complex poses.<br>\u2192 <strong>Tip:</strong> use the manual editor to fix any rough spots. The eraser gives you pixel-level control.',
     'status.reactor.offline': 'reactor idle',
     'status.reactor.online': 'reactor active',
@@ -210,13 +209,13 @@ const translations: Translations = {
     'reactor.cat.tooling': 'Tooling / CI / infra',
     'reactor.cat.tests': 'Tests',
     'reactor.howItWorks': 'How development works',
-    'reactor.howItWorksBody': 'This project is built with an AI coding assistant subscription, paid out of the maintainer pocket. When that budget runs out, code shipping pauses indefinitely until funded again. No new features, no bug fixes, no security patches during the pause. The infrastructure (CF Pages free tier + cached models) keeps the app running for users, but the codebase freezes.',
+    'reactor.howItWorksBody': 'This project is built with an AI coding assistant subscription, paid from the project budget. When that budget runs out, code shipping pauses indefinitely until funded again. No new features, no bug fixes, no security patches during the pause. The infrastructure (static hosting + cached models) keeps the app running for users, but the codebase freezes.',
     'reactor.donationLeverage': 'Donations directly extend the development runway:',
     'reactor.recentSupporters': 'Recent fuel injections',
-    'reactor.tipCta': 'Tip the reactor →',
+    'reactor.tipCta': 'View on GitHub →',
     'reactor.methodology': 'How is this calculated?',
     'reactor.methodologyBody': 'Hours estimated from git commit count weighted by typical time-per-commit per category, with adjustments for research, debugging, and discarded explorations not visible in the commit log. Estimate accuracy: ±15h. Fair-rate set deliberately below mid-market freelance rate in Spain (€22-25/h for mid devs) to avoid inflation.',
-    'reactor.noSupportersYet': 'No supporters yet — code shipping is currently funded by the maintainer pocket. Tip below to extend the runway.',
+    'reactor.noSupportersYet': 'No supporters yet — development is currently funded from the project budget. See the breakdown above.',
     'reactor.anonymousLine': '+ {count} anonymous supporters ({total} combined)',
 
     // Pipeline error
@@ -400,9 +399,8 @@ const translations: Translations = {
     'privacy.tooltip.line2': 'Todo el procesamiento ocurre en tu navegador.',
     'privacy.tooltip.line3': 'Verifica: revisa la pesta\u00F1a Red en DevTools.',
 
-    // Featuresko-fi.com/o99
-    'features.disclaimer': 'Somos <s>perfectos</s> honestos. A veces fallamos. Arr\u00E9glalo con el editor o <a href="https://github.com/9oll/nukebg/issues" target="_blank" rel="noopener">grita en el repo</a>.',
-    'support.kofi': 'El reactor sigue prendido mientras haya caf\u00E9. <a href="https://ko-fi.com/o99" target="_blank" rel="noopener">Dale combustible en Ko-fi</a>.',
+    // Features
+    'features.disclaimer': 'Somos <s>perfectos</s> honestos. A veces fallamos. Arr\u00E9glalo con el editor o <a href="https://github.com/o9ll/nukebg/issues" target="_blank" rel="noopener">grita en el repo</a>.',
     'features.limitations': '\u2192 <strong>Funciona mejor con:</strong> sujetos claros sobre fondos contrastados, fotos, logos, firmas.<br>\u2192 <strong>Puede fallar con:</strong> pelo sobre fondos complejos, objetos semitransparentes, poses muy complejas.<br>\u2192 <strong>Consejo:</strong> usa el editor manual para corregir las zonas que no queden bien. El borrador te da control pixel a pixel.',
     'status.reactor.offline': 'reactor inactivo',
     'status.reactor.online': 'reactor activo',
@@ -458,7 +456,7 @@ const translations: Translations = {
     'reactor.howItWorksBody': 'Este proyecto se construye con una suscripción de asistente IA, pagada del bolsillo del maintainer. Cuando el presupuesto se acabe, el shipeo de código se pausa indefinidamente hasta que se vuelva a financiar. Sin nuevas features, sin bug fixes, sin parches de seguridad durante la pausa. La infraestructura (free tier de CF Pages + modelos cacheados) mantiene la app corriendo para usuarios, pero el código se congela.',
     'reactor.donationLeverage': 'Las donaciones extienden el runway de desarrollo directamente:',
     'reactor.recentSupporters': 'Inyecciones de combustible recientes',
-    'reactor.tipCta': 'Alimentar el reactor →',
+    'reactor.tipCta': 'Ver en GitHub →',
     'reactor.methodology': '¿Cómo se calcula?',
     'reactor.methodologyBody': 'Horas estimadas desde el commit count de git ponderado por tiempo típico por commit por categoría, con ajustes por investigación, debugging y exploraciones descartadas no visibles en los commits. Precisión estimada: ±15h. La tarifa se fija deliberadamente por debajo del rate mid-market freelance en España (€22-25/h para devs mid) para evitar inflación.',
     'reactor.noSupportersYet': 'Sin supporters todavía — el shipeo de código está financiado actualmente por el bolsillo del maintainer. Alimenta abajo para extender el runway.',
@@ -646,10 +644,9 @@ const translations: Translations = {
     'privacy.tooltip.line3': "V\u00E9rifie : ouvre l'onglet R\u00E9seau dans DevTools.",
 
     // Features
-    'features.disclaimer': "On est <s>parfaits</s> honn\u00EAtes. Parfois on rate. Corrige avecko-fi.com/o99 href=\"https://github.com/9oll/nukebg/issues\" target=\"_blank\" rel=\"noopener\">gueule sur le repo</a>.",
+    'features.disclaimer': "On est <s>parfaits</s> honn\u00EAtes. Parfois on rate. Corrige avec l'\u00E9diteur ou <a href=\"https://github.com/o9ll/nukebg/issues\" target=\"_blank\" rel=\"noopener\">gueule sur le repo</a>.",
     'features.limitations': "\u2192 <strong>Marche mieux avec :</strong> sujets nets sur fond contrast\u00E9, photos, logos, signatures.<br>\u2192 <strong>Peut galérer avec :</strong> cheveux sur fonds charg\u00E9s, objets semi-transparents, poses tr\u00E8s complexes.<br>\u2192 <strong>Astuce :</strong> utilise l'\u00E9diteur manuel pour corriger les zones approximatives. La gomme te donne le contr\u00F4le au pixel.",
     'status.reactor.offline': 'r\u00E9acteur inactif',
-    'support.kofi': 'Le r\u00E9acteur tient tant qu\u2019il y a du caf\u00E9. <a href="https://ko-fi.com/o99" target="_blank" rel="noopener">Alimente-le sur Ko-fi</a>.',
     'status.reactor.online': 'r\u00E9acteur actif',
     'status.model.cached': 'RMBG-1.4 en cache local',
     'status.model.loading': 'chargement...',
@@ -703,7 +700,7 @@ const translations: Translations = {
     'reactor.howItWorksBody': 'Ce projet est construit avec un abonnement assistant IA, payé sur les fonds personnels du maintainer. Quand ce budget est épuisé, le shipping de code se met en pause indéfiniment jusqu\'au prochain financement. Pas de nouvelles features, pas de bug fixes, pas de patches de sécurité pendant la pause. L\'infrastructure (free tier CF Pages + modèles cachés) maintient l\'app en marche pour les utilisateurs, mais le code se gèle.',
     'reactor.donationLeverage': 'Les donations étendent directement le runway de développement :',
     'reactor.recentSupporters': 'Injections de carburant récentes',
-    'reactor.tipCta': 'Alimenter le réacteur →',
+    'reactor.tipCta': 'Voir sur GitHub →',
     'reactor.methodology': 'Comment c\'est calculé ?',
     'reactor.methodologyBody': 'Heures estimées depuis le commit count git pondéré par temps typique par commit par catégorie, avec ajustements pour la recherche, le debugging et les explorations abandonnées non visibles dans les commits. Précision : ±15h. Tarif fixé délibérément en dessous du mid-market freelance en Espagne (€22-25/h pour devs mid) pour éviter l\'inflation.',
     'reactor.noSupportersYet': 'Pas encore de supporters — le shipping de code est actuellement financé par les fonds personnels du maintainer. Alimente en dessous pour étendre le runway.',
@@ -888,11 +885,10 @@ const translations: Translations = {
     'privacy.badge': '\uD83D\uDD12 100% Client-seitig',
     'privacy.tooltip.line1': 'Deine Bilder verlassen nie dein Ger\u00E4t.',
     'privacy.tooltip.line2': 'Alles wird in deinem Browser verarbeitet.',
-    'privacy.tooltip.line3': 'Pr\u00FCfe selbst: Netzwerk-Tab in DevTools \u00F6ffnen.', ko- fi.com / o99
+    'privacy.tooltip.line3': 'Pr\u00FCfe selbst: Netzwerk-Tab in DevTools \u00F6ffnen.',
 
     // Features
-    'features.disclaimer': 'Wir sind <s>perfekt</s> ehrlich. Manchmal daneben. Nachbessern im Editor oder <a href="https://github.com/9oll/nukebg/issues" target="_blank" rel="noopener">im Repo meckern</a>.',
-  'support.kofi': 'Der Reaktor l\u00E4uft, solange der Kaffee flie\u00DFt. <a href="https://ko-fi.com/o99" target="_blank" rel="noopener">F\u00FCttere ihn auf Ko-fi</a>.',
+    'features.disclaimer': 'Wir sind <s>perfekt</s> ehrlich. Manchmal daneben. Nachbessern im Editor oder <a href="https://github.com/o9ll/nukebg/issues" target="_blank" rel="noopener">im Repo meckern</a>.',
   'features.limitations': '\u2192 <strong>Funktioniert am besten mit:</strong> klare Motive vor kontrastreichem Hintergrund, Fotos, Logos, Unterschriften.<br>\u2192 <strong>Kann Probleme haben mit:</strong> Haare vor unruhigem Hintergrund, halbtransparente Objekte, sehr komplexe Posen.<br>\u2192 <strong>Tipp:</strong> nutze den manuellen Editor f\u00FCr unsaubere Stellen. Der Radierer gibt dir Kontrolle auf Pixelebene.',
   'status.reactor.offline': 'Reaktor inaktiv',
   'status.reactor.online': 'Reaktor aktiv',
@@ -948,7 +944,7 @@ const translations: Translations = {
   'reactor.howItWorksBody': 'Dieses Projekt wird mit einem KI-Coding-Assistent Abo gebaut, aus eigener Tasche des Maintainers bezahlt. Wenn das Budget aufgebraucht ist, pausiert das Code-Shipping unbegrenzt bis zur nächsten Finanzierung. Keine neuen Features, keine Bugfixes, keine Sicherheitspatches während der Pause. Die Infrastruktur (CF Pages Free Tier + gecachte Modelle) hält die App für Nutzer am Laufen, aber die Codebasis friert ein.',
   'reactor.donationLeverage': 'Spenden verlängern direkt das Entwicklungs-Runway:',
   'reactor.recentSupporters': 'Aktuelle Treibstoffeinspritzungen',
-  'reactor.tipCta': 'Reaktor speisen →',
+  'reactor.tipCta': 'Auf GitHub ansehen →',
   'reactor.methodology': 'Wie wird das berechnet?',
   'reactor.methodologyBody': 'Stunden geschätzt aus Git-Commit-Anzahl, gewichtet nach typischer Zeit-pro-Commit pro Kategorie, mit Anpassungen für Forschung, Debugging und verworfene Explorationen, die nicht in Commits sichtbar sind. Genauigkeit: ±15h. Stundensatz bewusst unter dem Mid-Market-Freelance-Satz in Spanien (€22-25/h für Mid-Devs) gesetzt, um Inflation zu vermeiden.',
   'reactor.noSupportersYet': 'Noch keine Supporter — Code-Shipping wird aktuell aus eigener Tasche des Maintainers finanziert. Speisen Sie unten, um das Runway zu verlängern.',
@@ -1132,12 +1128,11 @@ const translations: Translations = {
     // Privacy
     'privacy.badge': '\uD83D\uDD12 100% no seu navegador',
     'privacy.tooltip.line1': 'Suas imagens nunca saem do seu dispositivo.',
-    'privacy.tooltip.line2': 'Todo o processamento roda no seu navegador.',ko-fi.com / o99;
-'privacy.tooltip.line3': 'Confere: abre a aba Rede no DevTools.',
+    'privacy.tooltip.line2': 'Todo o processamento roda no seu navegador.',
+    'privacy.tooltip.line3': 'Confere: abre a aba Rede no DevTools.',
 
-  // Features
-  'features.disclaimer': 'Somos <s>perfeitos</s> honestos. \u00C0s vezes erramos. Arruma no editor ou <a href="https://github.com/9oll/nukebg/issues" target="_blank" rel="noopener">xinga no repo</a>.',
-    'support.kofi': 'O reator s\u00F3 fica ligado enquanto tiver caf\u00E9. <a href="https://ko-fi.com/o99" target="_blank" rel="noopener">Abastece no Ko-fi</a>.',
+    // Features
+    'features.disclaimer': 'Somos <s>perfeitos</s> honestos. \u00C0s vezes erramos. Arruma no editor ou <a href="https://github.com/o9ll/nukebg/issues" target="_blank" rel="noopener">xinga no repo</a>.',
       'features.limitations': '\u2192 <strong>Funciona melhor com:</strong> sujeitos n\u00EDtidos em fundos contrastados, fotos, logos, assinaturas.<br>\u2192 <strong>Pode penar com:</strong> cabelo em fundos complexos, objetos semitransparentes, poses muito complicadas.<br>\u2192 <strong>Dica:</strong> usa o editor manual pra corrigir as partes que ficaram estranhas. A borracha d\u00E1 controle pixel a pixel.',
         'status.reactor.offline': 'reator inativo',
           'status.reactor.online': 'reator ativo',
@@ -1193,7 +1188,7 @@ const translations: Translations = {
                                                                                                             'reactor.howItWorksBody': 'Este projeto é construído com uma assinatura de assistente IA, paga do bolso do maintainer. Quando esse orçamento acabar, o shipping de código pausa indefinidamente até nova financiação. Sem novas features, sem bug fixes, sem patches de segurança durante a pausa. A infraestrutura (free tier CF Pages + modelos cacheados) mantém o app rodando para usuários, mas o código congela.',
                                                                                                               'reactor.donationLeverage': 'Doações estendem diretamente o runway de desenvolvimento:',
                                                                                                                 'reactor.recentSupporters': 'Injeções de combustível recentes',
-                                                                                                                  'reactor.tipCta': 'Alimentar o reator →',
+                                                                                                                  'reactor.tipCta': 'Ver no GitHub →',
                                                                                                                     'reactor.methodology': 'Como é calculado?',
                                                                                                                       'reactor.methodologyBody': 'Horas estimadas pelo commit count git ponderado por tempo típico por commit por categoria, com ajustes para pesquisa, debugging e explorações descartadas não visíveis nos commits. Precisão: ±15h. Taxa fixada deliberadamente abaixo do mid-market freelance na Espanha (€22-25/h para devs mid) para evitar inflação.',
                                                                                                                         'reactor.noSupportersYet': 'Sem supporters ainda — o shipping de código está financiado pelo bolso do maintainer. Alimente abaixo para estender o runway.',
@@ -1230,13 +1225,13 @@ const translations: Translations = {
                                                                                                                                                                           'batch.discarded': 'Descartada',
                                                                                                                                                                             'batch.completed': '{done}/{total} prontas, {failed} falharam',
                                                                                                                                                                               'batch.cancel': 'Cancelar lote',
-                                                                                                                                                                                'dropzone.multi': 'Solta at\u00E9 12 imagens pra modo em lote',;
+                                                                                                                                                                                'dropzone.multi': 'Solta at\u00E9 12 imagens pra modo em lote',
 
     // Language selector
   },
-zh: {
-  // Hero
-  'hero.title.accent': '\u6838\u7206',
+  zh: {
+    // Hero
+    'hero.title.accent': '\u6838\u7206',
     'hero.title.rest': '\u4EFB\u4F55\u80CC\u666F',
       'hero.subtitle': '\u4E22\u5F20\u56FE\u7247\u8FDB\u6765\u3002\u62FF\u8D70\u900F\u660E PNG\u3002\n\u96F6\u4E0A\u4F20\u3002\u96F6\u6CE8\u518C\u3002\u96F6\u5E9F\u8BDD\u3002',
         'hero.title.short': '\u6838\u7206\u80CC\u666F',
@@ -1376,13 +1371,12 @@ zh: {
 
                                                                                                                                                                                                                                                       // Privacy
                                                                                                                                                                                                                                                       'privacy.badge': '\uD83D\uDD12 100% \u672C\u5730\u5904\u7406',
-                                                                                                                                                                                                                                                        'privacy.tooltip.line1': '\u4F60\u7684\u56FE\u7247\u6C38\u8FDC\u4E0D\u4F1A\u79BB\u5F00\uko-fi.com/o997\u3002',
+                                                                                                                                                                                                                                                        'privacy.tooltip.line1': '\u4F60\u7684\u56FE\u7247\u6C38\u8FDC\u4E0D\u4F1A\u79BB\u5F00\u4F60\u7684\u8BBE\u5907\u3002',
                                                                                                                                                                                                                                                           'privacy.tooltip.line2': '\u6240\u6709\u5904\u7406\u5747\u5728\u6D4F\u89C8\u5668\u4E2D\u5B8C\u6210\u3002',
                                                                                                                                                                                                                                                             'privacy.tooltip.line3': '\u9A8C\u8BC1\uFF1A\u6253\u5F00 DevTools \u67E5\u770B\u7F51\u7EDC\u9762\u677F\u3002',
 
                                                                                                                                                                                                                                                               // Features
-                                                                                                                                                                                                                                                              'features.disclaimer': '\u6211\u4EEC<s>\u5B8C\u7F8E</s>\u8BDA\u5B9E\u3002\u6709\u65F6\u7FFB\u8F66\u3002\u7528\u7F16\u8F91\u5668\u4FEE\uFF0C\u6216<a href="https://github.com/9oll/nukebg/issues" target="_blank" rel="noopener">\u53BB repo \u5410\u69FD</a>\u3002',
-                                                                                                                                                                                                                                                                'support.kofi': '\u53CD\u5E94\u5806\u9760\u5496\u5561\u8FD0\u8F6C\u3002<a href="https://ko-fi.com/o99" target="_blank" rel="noopener">\u5728 Ko-fi \u4E0A\u52A0\u6CB9</a>\u3002',
+                                                                                                                                                                                                                                                              'features.disclaimer': '\u6211\u4EEC<s>\u5B8C\u7F8E</s>\u8BDA\u5B9E\u3002\u6709\u65F6\u7FFB\u8F66\u3002\u7528\u7F16\u8F91\u5668\u4FEE\uFF0C\u6216<a href="https://github.com/o9ll/nukebg/issues" target="_blank" rel="noopener">\u53BB repo \u5410\u69FD</a>\u3002',
                                                                                                                                                                                                                                                                   'features.limitations': '\u2192 <strong>\u6700\u9002\u5408\uFF1A</strong>\u6E05\u6670\u4E3B\u4F53\u914D\u5BF9\u6BD4\u660E\u663E\u7684\u80CC\u666F\u3001\u7167\u7247\u3001logo\u3001\u7B7E\u540D\u3002<br>\u2192 <strong>\u53EF\u80FD\u7FFB\u8F66\uFF1A</strong>\u590D\u6742\u80CC\u666F\u4E0A\u7684\u5934\u53D1\u3001\u534A\u900F\u660E\u7269\u4F53\u3001\u975E\u5E38\u590D\u6742\u7684\u59FF\u52BF\u3002<br>\u2192 <strong>\u5C0F\u8D34\u58EB\uFF1A</strong>\u7528\u624B\u52A8\u7F16\u8F91\u5668\u4FEE\u590D\u4E0D\u5B8C\u7F8E\u7684\u5730\u65B9\u3002\u6A61\u76AE\u64E6\u7ED9\u4F60\u50CF\u7D20\u7EA7\u7684\u63A7\u5236\u3002',
                                                                                                                                                                                                                                                                     'status.reactor.offline': '\u53CD\u5E94\u5806\u672A\u542F\u52A8',
                                                                                                                                                                                                                                                                       'status.reactor.online': '\u53CD\u5E94\u5806\u5DF2\u6FC0\u6D3B',
@@ -1438,7 +1432,7 @@ zh: {
                                                                                                                                                                                                                                                                                                                                                                         'reactor.howItWorksBody': '\u672C\u9879\u76EE\u4F7F\u7528 AI \u7F16\u7801\u52A9\u624B\u8BA2\u9605\u6784\u5EFA, \u7531\u7EF4\u62A4\u8005\u81EA\u638F\u8170\u5305\u652F\u4ED8\u3002\u9884\u7B97\u7528\u5B8C\u65F6, \u4EE3\u7801\u53D1\u5E03\u5C06\u65E0\u9650\u671F\u6682\u505C, \u76F4\u5230\u518D\u6B21\u83B7\u5F97\u8D44\u91D1\u3002\u6682\u505C\u671F\u95F4\u6CA1\u6709\u65B0\u529F\u80FD, \u6CA1\u6709 bug \u4FEE\u590D, \u6CA1\u6709\u5B89\u5168\u8865\u4E01\u3002\u57FA\u7840\u8BBE\u65BD (CF Pages \u514D\u8D39\u5C42 + \u7F13\u5B58\u6A21\u578B) \u8BA9\u5E94\u7528\u5BF9\u7528\u6237\u4FDD\u6301\u8FD0\u884C, \u4F46\u4EE3\u7801\u5E93\u4F1A\u51BB\u7ED3\u3002',
                                                                                                                                                                                                                                                                                                                                                                           'reactor.donationLeverage': '\u6350\u6B3E\u76F4\u63A5\u5EF6\u957F\u5F00\u53D1\u8FD0\u884C\u65F6\u95F4:',
                                                                                                                                                                                                                                                                                                                                                                             'reactor.recentSupporters': '\u6700\u8FD1\u7684\u71C3\u6599\u6CE8\u5165',
-                                                                                                                                                                                                                                                                                                                                                                              'reactor.tipCta': '\u8D44\u52A9\u53CD\u5E94\u5806 \u2192',
+                                                                                                                                                                                                                                                                                                                                                                              'reactor.tipCta': '\u5728 GitHub \u67E5\u770B \u2192',
                                                                                                                                                                                                                                                                                                                                                                                 'reactor.methodology': '\u5982\u4F55\u8BA1\u7B97?',
                                                                                                                                                                                                                                                                                                                                                                                   'reactor.methodologyBody': '\u6839\u636E git \u63D0\u4EA4\u6570\u91CF\u6309\u7C7B\u522B\u4F30\u7B97\u5178\u578B\u6BCF\u63D0\u4EA4\u65F6\u95F4, \u5E76\u8C03\u6574\u63D0\u4EA4\u65E5\u5FD7\u4E2D\u4E0D\u53EF\u89C1\u7684\u7814\u7A76\u3001\u8C03\u8BD5\u548C\u5E9F\u5F03\u63A2\u7D22\u3002\u7CBE\u5EA6: \u00B115h\u3002\u65F6\u85AA\u6545\u610F\u4F4E\u4E8E\u897F\u73ED\u7259\u4E2D\u7AEF\u81EA\u7531\u804C\u4E1A\u5E02\u573A (\u20AC22-25/h) \u4EE5\u907F\u514D\u81A8\u80C0\u3002',
                                                                                                                                                                                                                                                                                                                                                                                     'reactor.noSupportersYet': '\u8FD8\u6CA1\u6709\u652F\u6301\u8005 \u2014 \u4EE3\u7801\u53D1\u5E03\u76EE\u524D\u7531\u7EF4\u62A4\u8005\u81EA\u638F\u8170\u5305\u8D44\u52A9\u3002\u5728\u4E0B\u9762\u8D44\u52A9\u4EE5\u5EF6\u957F\u8FD0\u884C\u65F6\u95F4\u3002',
@@ -1475,7 +1469,7 @@ zh: {
                                                                                                                                                                                                                                                                                                                                                                                                                                       'batch.discarded': '\u5DF2\u4E22\u5F03',
                                                                                                                                                                                                                                                                                                                                                                                                                                         'batch.completed': '{done}/{total} \u5B8C\u6210\uFF0C{failed} \u5931\u8D25',
                                                                                                                                                                                                                                                                                                                                                                                                                                           'batch.cancel': '\u53D6\u6D88\u6279\u91CF',
-                                                                                                                                                                                                                                                                                                                                                                                                                                            'dropzone.multi': '\u62D6\u5165\u6700\u591A 12 \u5F20\u56FE\u7247\u8FDB\u5165\u6279\u91CF\u6A21\u5F0F',;
+                                                                                                                                                                                                                                                                                                                                                                                                                                            'dropzone.multi': '\u62D6\u5165\u6700\u591A 12 \u5F20\u56FE\u7247\u8FDB\u5165\u6279\u91CF\u6A21\u5F0F',
 
   // Language selector
 },

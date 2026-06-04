@@ -92,25 +92,18 @@ describe('status line — reactor offline → active flip', () => {
   });
 });
 
-describe('hero disclaimer + support pitch (recovered from reactor copy)', () => {
+describe('hero disclaimer (recovered from reactor copy)', () => {
   it('hero renders <p id="hero-disclaimer"> using features.disclaimer', () => {
     expect(APP).toMatch(
       /<p class="hero-disclaimer" id="hero-disclaimer">\$\{t\(['"]features\.disclaimer['"]\)\}/,
     );
   });
 
-  it('hero renders <p id="hero-support"> using support.kofi', () => {
-    expect(APP).toMatch(
-      /<p class="hero-support" id="hero-support">\$\{t\(['"]support\.kofi['"]\)\}/,
-    );
-  });
-
-  it('updateTexts re-localizes both paragraphs on locale change', () => {
+  it('updateTexts re-localizes disclaimer on locale change', () => {
     expect(APP).toMatch(/heroDisclaimer\.innerHTML = t\(['"]features\.disclaimer['"]\)/);
-    expect(APP).toMatch(/heroSupport\.innerHTML = t\(['"]support\.kofi['"]\)/);
   });
 
-  it('support.kofi is shipped in all six locales', () => {
-    expect((I18N.match(/'support\.kofi'\s*:/g) ?? []).length).toBe(6);
+  it('features.disclaimer links to the public GitHub repo in all six locales', () => {
+    expect((I18N.match(/github\.com\/o9ll\/nukebg\/issues/g) ?? []).length).toBe(6);
   });
 });

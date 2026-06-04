@@ -9,7 +9,7 @@
  *
  * Show rules (per spec):
  *   nuke #1   → first-star    (GitHub star ask)
- *   nuke #5   → five-tip      (donation ask, Ko-fi)
+ *   nuke #5   → five-tip      (donation ask)
  *   nuke #10  → ten-review    (community review ask)
  *
  * Each CTA shows AT MOST ONCE per user. Acting on it (click) marks it

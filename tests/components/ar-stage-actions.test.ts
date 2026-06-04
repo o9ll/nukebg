@@ -34,9 +34,7 @@ describe('inline error-stage actions (#78)', () => {
 
   it('ar-app wires ar:stage-retry -> retryFromError and ar:stage-report -> GitHub issue URL', () => {
     expect(APP).toMatch(/ar:stage-retry[\s\S]*?retryFromError\(\)/);
-    expect(APP).toMatch(
-      /ar:stage-report[\s\S]*?github\.com\/o9ll\/nukebg\/issues\/new\?title=/,
-    );
+    expect(APP).toMatch(/ar:stage-report[\s\S]*?\$\{REPO_URL\}\/issues\/new\?title=/);
     // Body embeds UA + locale for debugging
     expect(APP).toMatch(/encodeURIComponent\(navigator\.userAgent\)/);
   });

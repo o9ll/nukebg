@@ -9,7 +9,8 @@ const EXCLUDED_PATTERNS = [
 ];
 
 // App shell to pre-cache on install
-const APP_SHELL = ['/', '/index.html'];
+// Relative to the SW script URL so this works at site root and on GitHub Pages (/nukebg/).
+const APP_SHELL = ['./', './index.html'];
 
 function isExcluded(url) {
   return EXCLUDED_PATTERNS.some((pattern) => url.includes(pattern));

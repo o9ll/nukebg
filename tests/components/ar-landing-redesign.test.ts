@@ -80,7 +80,7 @@ describe('Landing redesign — ar-dropzone.ts invariants', () => {
     expect(DZ).toMatch(/&#8595;/);
   });
 
-  it('has a terminal prompt row (nukebg@local:~$ drop --image)', () => {
+  it('has a terminal prompt row (o9:~$ drop --image)', () => {
     expect(DZ).toMatch(/nukebg@local:~\$ <span class="cmd">drop --image<\/span>/);
   });
 

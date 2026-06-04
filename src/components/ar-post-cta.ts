@@ -9,6 +9,7 @@
  */
 
 import { t } from '../i18n';
+import { REPO_URL } from '../site';
 import {
   recordSuccessfulNuke,
   pickCtaForCurrentState,
@@ -27,17 +28,17 @@ const COPY: Record<CtaKey, CtaCopyKeys> = {
   'first-star': {
     text: 'cta.firstStar.text',
     cta: 'cta.firstStar.cta',
-    href: 'https://github.com/9oll/nukebg',
+    href: REPO_URL,
   },
   'five-tip': {
     text: 'cta.fiveTip.text',
     cta: 'cta.fiveTip.cta',
-    href: 'https://ko-fi.com/o99',
+    href: '#reactor',
   },
   'ten-review': {
     text: 'cta.tenReview.text',
     cta: 'cta.tenReview.cta',
-    href: 'https://github.com/9oll/nukebg/discussions',
+    href: `${REPO_URL}/discussions`,
   },
 };
 

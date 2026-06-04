@@ -1,4 +1,5 @@
 import type { SupportedFormat, ImageLoadResult, ExportFormat } from '../types/image';
+import { SITE_ORIGIN } from '../site';
 import { getCapability, computeTargetSize, ABSOLUTE_MAX_PIXELS } from './capability-detector';
 
 const SUPPORTED_FORMATS: SupportedFormat[] = ['image/png', 'image/jpeg', 'image/webp'];
@@ -175,8 +176,8 @@ export async function exportPng(imageData: ImageData): Promise<Blob> {
     });
   }
   return injectPngMetadata(rawBlob, {
-    Software: 'NukeBG v2.12.0',
-    Source: 'https://nukebg.app',
+    Software: 'NukeBG',
+    Source: SITE_ORIGIN,
   });
 }
 

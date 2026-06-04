@@ -128,6 +128,21 @@ describe('ArDropzone component (#131)', () => {
       dropzone.setEnabled(true);
       expect(dz.classList.contains('dropzone-disabled')).toBe(false);
     });
+
+    it('while disabled, drops are ignored but still cancel default navigation', async () => {
+      dropzone.setEnabled(false);
+      const dispatched = vi.fn();
+      dropzone.addEventListener('ar:image-loaded', dispatched);
+
+      const ev = new DragEvent('drop', { bubbles: true, cancelable: true });
+      Object.defineProperty(ev, 'dataTransfer', {
+        value: { files: makeFileList([makePngFile()]), items: [], getData: () => '' },
+      });
+      dropzone.shadowRoot!.dispatchEvent(ev);
+      await Promise.resolve();
+      expect(dispatched).not.toHaveBeenCalled();
+      expect(ev.defaultPrevented).toBe(true);
+    });
   });
 
   // ─── setLoadingState ──────────────────────────────────────────────────────
@@ -211,23 +226,41 @@ describe('ArDropzone component (#131)', () => {
   // ─── Drag visual state ────────────────────────────────────────────────────
 
   describe('drag visual state', () => {
+    it('dragenter adds the .dragover class', () => {
+      const dz = dropzone.shadowRoot!.querySelector('.dropzone') as HTMLElement;
+      dropzone.shadowRoot!.dispatchEvent(
+        new DragEvent('dragenter', { bubbles: true, cancelable: true }),
+      );
+      expect(dz.classList.contains('dragover')).toBe(true);
+    });
+
     it('dragover adds the .dragover class', () => {
       const dz = dropzone.shadowRoot!.querySelector('.dropzone') as HTMLElement;
-      dz.dispatchEvent(new DragEvent('dragover', { bubbles: true }));
+      dropzone.shadowRoot!.dispatchEvent(
+        new DragEvent('dragover', { bubbles: true, cancelable: true }),
+      );
       expect(dz.classList.contains('dragover')).toBe(true);
     });
 
     it('dragleave removes the .dragover class', () => {
       const dz = dropzone.shadowRoot!.querySelector('.dropzone') as HTMLElement;
-      dz.dispatchEvent(new DragEvent('dragover', { bubbles: true }));
-      dz.dispatchEvent(new DragEvent('dragleave', { bubbles: true }));
+      dropzone.shadowRoot!.dispatchEvent(
+        new DragEvent('dragenter', { bubbles: true, cancelable: true }),
+      );
+      dropzone.shadowRoot!.dispatchEvent(
+        new DragEvent('dragleave', { bubbles: true, cancelable: true }),
+      );
       expect(dz.classList.contains('dragover')).toBe(false);
     });
 
     it('drop also removes the .dragover class', () => {
       const dz = dropzone.shadowRoot!.querySelector('.dropzone') as HTMLElement;
-      dz.dispatchEvent(new DragEvent('dragover', { bubbles: true }));
-      dz.dispatchEvent(new DragEvent('drop', { bubbles: true }));
+      dropzone.shadowRoot!.dispatchEvent(
+        new DragEvent('dragover', { bubbles: true, cancelable: true }),
+      );
+      dropzone.shadowRoot!.dispatchEvent(
+        new DragEvent('drop', { bubbles: true, cancelable: true }),
+      );
       expect(dz.classList.contains('dragover')).toBe(false);
     });
   });
@@ -236,11 +269,10 @@ describe('ArDropzone component (#131)', () => {
 
   describe('drop pathway', () => {
     it('a single valid PNG drop dispatches ar:image-loaded with the file + image data', async () => {
-      const dz = dropzone.shadowRoot!.querySelector('.dropzone') as HTMLElement;
       const file = makePngFile('hero.png');
-      const ev = new DragEvent('drop', { bubbles: true });
+      const ev = new DragEvent('drop', { bubbles: true, cancelable: true });
       Object.defineProperty(ev, 'dataTransfer', {
-        value: { files: makeFileList([file]) },
+        value: { files: makeFileList([file]), items: [], getData: () => '' },
       });
 
       const promise = new Promise<CustomEvent>((resolve) => {
@@ -248,7 +280,7 @@ describe('ArDropzone component (#131)', () => {
           once: true,
         });
       });
-      dz.dispatchEvent(ev);
+      dropzone.shadowRoot!.dispatchEvent(ev);
       const event = await promise;
 
       expect(event.detail.file).toBe(file);
@@ -258,18 +290,37 @@ describe('ArDropzone component (#131)', () => {
       expect(event.detail.wasDownsampled).toBe(true);
     });
 
+    it('drop on the title text still loads the image (capture handler)', async () => {
+      const title = dropzone.shadowRoot!.querySelector('#dz-title') as HTMLElement;
+      const file = makePngFile('on-title.png');
+      const ev = new DragEvent('drop', { bubbles: true, cancelable: true });
+      Object.defineProperty(ev, 'dataTransfer', {
+        value: { files: makeFileList([file]), items: [], getData: () => '' },
+      });
+
+      const promise = new Promise<CustomEvent>((resolve) => {
+        dropzone.addEventListener('ar:image-loaded', (e) => resolve(e as CustomEvent), {
+          once: true,
+        });
+      });
+      title.dispatchEvent(ev);
+      const event = await promise;
+      expect(event.detail.file.name).toBe('on-title.png');
+    });
+
     it('two valid files dispatch ar:images-loaded (plural) with the array', async () => {
-      const dz = dropzone.shadowRoot!.querySelector('.dropzone') as HTMLElement;
       const files = [makePngFile('a.png'), makePngFile('b.png')];
-      const ev = new DragEvent('drop', { bubbles: true });
-      Object.defineProperty(ev, 'dataTransfer', { value: { files: makeFileList(files) } });
+      const ev = new DragEvent('drop', { bubbles: true, cancelable: true });
+      Object.defineProperty(ev, 'dataTransfer', {
+        value: { files: makeFileList(files), items: [], getData: () => '' },
+      });
 
       const promise = new Promise<CustomEvent>((resolve) => {
         dropzone.addEventListener('ar:images-loaded', (e) => resolve(e as CustomEvent), {
           once: true,
         });
       });
-      dz.dispatchEvent(ev);
+      dropzone.shadowRoot!.dispatchEvent(ev);
       const event = await promise;
 
       expect(Array.isArray(event.detail.images)).toBe(true);
@@ -286,31 +337,60 @@ describe('ArDropzone component (#131)', () => {
       dropzone.addEventListener('ar:image-loaded', dispatched);
       dropzone.addEventListener('ar:images-loaded', dispatched);
 
-      const ev = new DragEvent('drop', { bubbles: true });
+      const ev = new DragEvent('drop', { bubbles: true, cancelable: true });
       Object.defineProperty(ev, 'dataTransfer', {
-        value: { files: makeFileList([makeBadFile()]) },
+        value: { files: makeFileList([makeBadFile()]), items: [], getData: () => '' },
       });
-      dz.dispatchEvent(ev);
+      dropzone.shadowRoot!.dispatchEvent(ev);
 
-      // Allow the async handler to run
-      await Promise.resolve();
-      await Promise.resolve();
+      await vi.waitFor(() => {
+        expect(dz.classList.contains('error')).toBe(true);
+      });
 
       expect(dispatched).not.toHaveBeenCalled();
-      expect(dz.classList.contains('error')).toBe(true);
       expect(title.textContent).not.toBe(original);
     });
 
     it('drops with no dataTransfer.files do not throw and dispatch nothing', () => {
-      const dz = dropzone.shadowRoot!.querySelector('.dropzone') as HTMLElement;
       const dispatched = vi.fn();
       dropzone.addEventListener('ar:image-loaded', dispatched);
       dropzone.addEventListener('ar:images-loaded', dispatched);
 
-      const ev = new DragEvent('drop', { bubbles: true });
-      Object.defineProperty(ev, 'dataTransfer', { value: { files: makeFileList([]) } });
-      expect(() => dz.dispatchEvent(ev)).not.toThrow();
+      const ev = new DragEvent('drop', { bubbles: true, cancelable: true });
+      Object.defineProperty(ev, 'dataTransfer', {
+        value: { files: makeFileList([]), items: [], getData: () => '' },
+      });
+      expect(() => dropzone.shadowRoot!.dispatchEvent(ev)).not.toThrow();
       expect(dispatched).not.toHaveBeenCalled();
+    });
+
+    it('browser image drag (text/uri-list) fetches and dispatches ar:image-loaded', async () => {
+      const blob = new Blob([new Uint8Array(8)], { type: 'image/png' });
+      const fetchSpy = vi.spyOn(globalThis, 'fetch').mockResolvedValue(
+        new Response(blob, { status: 200, headers: { 'Content-Type': 'image/png' } }),
+      );
+
+      const ev = new DragEvent('drop', { bubbles: true, cancelable: true });
+      Object.defineProperty(ev, 'dataTransfer', {
+        value: {
+          files: makeFileList([]),
+          items: { length: 0 },
+          getData: (type: string) =>
+            type === 'text/uri-list' ? 'https://example.com/photo.png\n' : '',
+        },
+      });
+
+      const promise = new Promise<CustomEvent>((resolve) => {
+        dropzone.addEventListener('ar:image-loaded', (e) => resolve(e as CustomEvent), {
+          once: true,
+        });
+      });
+      dropzone.shadowRoot!.dispatchEvent(ev);
+      const event = await promise;
+
+      expect(fetchSpy).toHaveBeenCalledWith('https://example.com/photo.png');
+      expect(event.detail.file.type).toBe('image/png');
+      fetchSpy.mockRestore();
     });
   });
 
@@ -413,14 +493,15 @@ describe('ArDropzone component (#131)', () => {
   // ─── Error UX ────────────────────────────────────────────────────────────
 
   describe('format error UX', () => {
-    it('drops the .error class onto the dropzone and clears it after the shake', () => {
+    it('drops the .error class onto the dropzone and clears it after the shake', async () => {
       vi.useFakeTimers();
       const dz = dropzone.shadowRoot!.querySelector('.dropzone') as HTMLElement;
-      const ev = new DragEvent('drop', { bubbles: true });
+      const ev = new DragEvent('drop', { bubbles: true, cancelable: true });
       Object.defineProperty(ev, 'dataTransfer', {
-        value: { files: makeFileList([makeBadFile()]) },
+        value: { files: makeFileList([makeBadFile()]), items: [], getData: () => '' },
       });
-      dz.dispatchEvent(ev);
+      dropzone.shadowRoot!.dispatchEvent(ev);
+      await Promise.resolve();
 
       expect(dz.classList.contains('error')).toBe(true);
       vi.advanceTimersByTime(350);
@@ -432,15 +513,13 @@ describe('ArDropzone component (#131)', () => {
       vi.useFakeTimers();
       const title = dropzone.shadowRoot!.querySelector('#dz-title')!;
       const original = title.textContent;
-      const dz = dropzone.shadowRoot!.querySelector('.dropzone') as HTMLElement;
-      const ev = new DragEvent('drop', { bubbles: true });
+      const ev = new DragEvent('drop', { bubbles: true, cancelable: true });
       Object.defineProperty(ev, 'dataTransfer', {
-        value: { files: makeFileList([makeBadFile()]) },
+        value: { files: makeFileList([makeBadFile()]), items: [], getData: () => '' },
       });
-      dz.dispatchEvent(ev);
+      dropzone.shadowRoot!.dispatchEvent(ev);
+      await Promise.resolve();
 
-      // Wait for async handler to set the error message
-      await vi.advanceTimersByTimeAsync(0);
       expect(title.textContent).not.toBe(original);
       vi.advanceTimersByTime(3100);
       expect(title.textContent).toBe(original);

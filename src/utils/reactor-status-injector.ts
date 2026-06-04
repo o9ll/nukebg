@@ -1,7 +1,7 @@
 /**
  * Reactor status injector — fetches donors.json at boot, computes runtime
  * via the pure economics module, and updates the few DOM elements that
- * carry the live numbers (footer status line, marquee segment, Ko-fi
+ * carry the live numbers (footer status line, marquee segment
  * link aria-label).
  *
  * Pure separation: no economics math here, no UI math here. Just glue.
@@ -21,7 +21,9 @@ import {
   type DonorsFile,
 } from './reactor-economics';
 
-const DONORS_URL = '/donors.json';
+import { publicPath } from '../site';
+
+const DONORS_URL = publicPath('donors.json');
 
 interface ReactorStatusStrings {
   /** Footer status line. Receives `{runtime}` as the runtime label. */

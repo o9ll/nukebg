@@ -6,6 +6,7 @@ import './styles/main.css';
 
 // i18n - importar antes de los componentes para que detecte el locale
 import { getLocale, setLocale, getDirection, t } from './i18n';
+import { SITE_ORIGIN } from './site';
 import { applyReactorStatus, formatBurnRate } from './utils/reactor-status-injector';
 
 // Register Web Components
@@ -166,11 +167,11 @@ function createShortcutOverlay(): HTMLDivElement {
 function showConsoleLogo(): void {
   const logo = `
 %c    ☢ NUKEBG ☢
-    v2.12.0 | Terminal Edition
+    Terminal Edition
 
     Your images never leave this machine.
     Don't believe us? Read the source:
-    https://github.com/9oll/nukebg
+    https://github.com/o9ll/nukebg
 
     > ready_
 `;
@@ -850,48 +851,48 @@ function initShareButton(): void {
 
   const shareMessages: Record<string, string[]> = {
     en: [
-      "Other tools upload your images. This one doesn't even know you exist \u2192 https://nukebg.app",
-      'Found a background remover that never uploads your images \u2192 https://nukebg.app',
-      'Drop. Nuke. Download. Your images never leave your device \u2192 https://nukebg.app',
-      'Zero uploads, zero tracking, zero BS. Just clean PNGs \u2192 https://nukebg.app',
-      'Open source background remover that runs 100% in your browser \u2192 https://nukebg.app',
-      'https://nukebg.app | because uploading images to remove a background is insane',
+      "Other tools upload your images. This one doesn't even know you exist \u2192 https://o9ll.github.io/nukebg",
+      'Found a background remover that never uploads your images \u2192 https://o9ll.github.io/nukebg',
+      'Drop. Nuke. Download. Your images never leave your device \u2192 https://o9ll.github.io/nukebg',
+      'Zero uploads, zero tracking, zero BS. Just clean PNGs \u2192 https://o9ll.github.io/nukebg',
+      'Open source background remover that runs 100% in your browser \u2192 https://o9ll.github.io/nukebg',
+      'https://o9ll.github.io/nukebg | because uploading images to remove a background is insane',
     ],
     es: [
-      'Otras herramientas suben tus im\u00E1genes. Esta ni sabe que existes \u2192 https://nukebg.app',
-      'Un eliminador de fondos que nunca sube tus im\u00E1genes \u2192 https://nukebg.app',
-      'Arrastra. Nukea. Descarga. Tus im\u00E1genes nunca salen de tu dispositivo \u2192 https://nukebg.app',
-      'Cero subidas, cero rastreo, cero rollos. Solo PNGs limpios \u2192 https://nukebg.app',
-      'Eliminador de fondos open source que corre 100% en tu navegador \u2192 https://nukebg.app',
-      'https://nukebg.app | porque subir tus im\u00E1genes para quitarles el fondo no tiene sentido',
+      'Otras herramientas suben tus im\u00E1genes. Esta ni sabe que existes \u2192 https://o9ll.github.io/nukebg',
+      'Un eliminador de fondos que nunca sube tus im\u00E1genes \u2192 https://o9ll.github.io/nukebg',
+      'Arrastra. Nukea. Descarga. Tus im\u00E1genes nunca salen de tu dispositivo \u2192 https://o9ll.github.io/nukebg',
+      'Cero subidas, cero rastreo, cero rollos. Solo PNGs limpios \u2192 https://o9ll.github.io/nukebg',
+      'Eliminador de fondos open source que corre 100% en tu navegador \u2192 https://o9ll.github.io/nukebg',
+      'https://o9ll.github.io/nukebg | porque subir tus im\u00E1genes para quitarles el fondo no tiene sentido',
     ],
     fr: [
-      'Les autres outils uploadent tes images. Celui-ci ne sait m\u00EAme pas que tu existes \u2192 https://nukebg.app',
-      "Un d\u00E9toureur qui n'uploade jamais tes images \u2192 https://nukebg.app",
-      'D\u00E9pose. Atomise. T\u00E9l\u00E9charge. Tes images ne quittent jamais ton appareil \u2192 https://nukebg.app',
-      'Z\u00E9ro upload, z\u00E9ro tracking, z\u00E9ro baratin \u2192 https://nukebg.app',
-      "https://nukebg.app | parce qu'uploader ses images pour retirer un fond, c'est absurde",
+      'Les autres outils uploadent tes images. Celui-ci ne sait m\u00EAme pas que tu existes \u2192 https://o9ll.github.io/nukebg',
+      "Un d\u00E9toureur qui n'uploade jamais tes images \u2192 https://o9ll.github.io/nukebg",
+      'D\u00E9pose. Atomise. T\u00E9l\u00E9charge. Tes images ne quittent jamais ton appareil \u2192 https://o9ll.github.io/nukebg',
+      'Z\u00E9ro upload, z\u00E9ro tracking, z\u00E9ro baratin \u2192 https://o9ll.github.io/nukebg',
+      "https://o9ll.github.io/nukebg | parce qu'uploader ses images pour retirer un fond, c'est absurde",
     ],
     de: [
-      'Andere Tools laden deine Bilder hoch. Dieses kennt dich nichtmal \u2192 https://nukebg.app',
-      'Hintergrund-Entferner, der deine Bilder nie hochl\u00E4dt \u2192 https://nukebg.app',
-      'Reinwerfen. Nuken. Runterladen. Deine Bilder verlassen nie dein Ger\u00E4t \u2192 https://nukebg.app',
-      'Null Uploads, null Tracking, null Bullshit \u2192 https://nukebg.app',
-      'https://nukebg.app | weil Bilder hochladen um den Hintergrund zu entfernen Irrsinn ist',
+      'Andere Tools laden deine Bilder hoch. Dieses kennt dich nichtmal \u2192 https://o9ll.github.io/nukebg',
+      'Hintergrund-Entferner, der deine Bilder nie hochl\u00E4dt \u2192 https://o9ll.github.io/nukebg',
+      'Reinwerfen. Nuken. Runterladen. Deine Bilder verlassen nie dein Ger\u00E4t \u2192 https://o9ll.github.io/nukebg',
+      'Null Uploads, null Tracking, null Bullshit \u2192 https://o9ll.github.io/nukebg',
+      'https://o9ll.github.io/nukebg | weil Bilder hochladen um den Hintergrund zu entfernen Irrsinn ist',
     ],
     pt: [
-      'Outras ferramentas sobem suas imagens. Essa nem sabe que voc\u00EA existe \u2192 https://nukebg.app',
-      'Removedor de fundo que nunca sobe suas imagens \u2192 https://nukebg.app',
-      'Joga. Nukeia. Baixa. Suas imagens nunca saem do seu dispositivo \u2192 https://nukebg.app',
-      'Zero uploads, zero rastreamento, zero frescura \u2192 https://nukebg.app',
-      'https://nukebg.app | porque subir imagem pra tirar fundo n\u00E3o faz sentido',
+      'Outras ferramentas sobem suas imagens. Essa nem sabe que voc\u00EA existe \u2192 https://o9ll.github.io/nukebg',
+      'Removedor de fundo que nunca sobe suas imagens \u2192 https://o9ll.github.io/nukebg',
+      'Joga. Nukeia. Baixa. Suas imagens nunca saem do seu dispositivo \u2192 https://o9ll.github.io/nukebg',
+      'Zero uploads, zero rastreamento, zero frescura \u2192 https://o9ll.github.io/nukebg',
+      'https://o9ll.github.io/nukebg | porque subir imagem pra tirar fundo n\u00E3o faz sentido',
     ],
     zh: [
-      '\u5176\u4ED6\u5DE5\u5177\u4F1A\u4E0A\u4F20\u4F60\u7684\u56FE\u7247\u3002\u8FD9\u4E2A\u8FDE\u4F60\u662F\u8C01\u90FD\u4E0D\u77E5\u9053 \u2192 https://nukebg.app',
-      '\u627E\u5230\u4E00\u4E2A\u6C38\u8FDC\u4E0D\u4F1A\u4E0A\u4F20\u4F60\u56FE\u7247\u7684\u53BB\u80CC\u666F\u5DE5\u5177 \u2192 https://nukebg.app',
-      '\u4E22\u56FE\u3002\u6838\u7206\u3002\u4E0B\u8F7D\u3002\u4F60\u7684\u56FE\u7247\u6C38\u8FDC\u4E0D\u4F1A\u79BB\u5F00\u4F60\u7684\u8BBE\u5907 \u2192 https://nukebg.app',
-      '\u96F6\u4E0A\u4F20\uFF0C\u96F6\u8FFD\u8E2A\uFF0C\u96F6\u5E9F\u8BDD \u2192 https://nukebg.app',
-      'https://nukebg.app | \u56E0\u4E3A\u4E3A\u4E86\u53BB\u80CC\u666F\u800C\u4E0A\u4F20\u56FE\u7247\u592A\u79BB\u8C31\u4E86',
+      '\u5176\u4ED6\u5DE5\u5177\u4F1A\u4E0A\u4F20\u4F60\u7684\u56FE\u7247\u3002\u8FD9\u4E2A\u8FDE\u4F60\u662F\u8C01\u90FD\u4E0D\u77E5\u9053 \u2192 https://o9ll.github.io/nukebg',
+      '\u627E\u5230\u4E00\u4E2A\u6C38\u8FDC\u4E0D\u4F1A\u4E0A\u4F20\u4F60\u56FE\u7247\u7684\u53BB\u80CC\u666F\u5DE5\u5177 \u2192 https://o9ll.github.io/nukebg',
+      '\u4E22\u56FE\u3002\u6838\u7206\u3002\u4E0B\u8F7D\u3002\u4F60\u7684\u56FE\u7247\u6C38\u8FDC\u4E0D\u4F1A\u79BB\u5F00\u4F60\u7684\u8BBE\u5907 \u2192 https://o9ll.github.io/nukebg',
+      '\u96F6\u4E0A\u4F20\uFF0C\u96F6\u8FFD\u8E2A\uFF0C\u96F6\u5E9F\u8BDD \u2192 https://o9ll.github.io/nukebg',
+      'https://o9ll.github.io/nukebg | \u56E0\u4E3A\u4E3A\u4E86\u53BB\u80CC\u666F\u800C\u4E0A\u4F20\u56FE\u7247\u592A\u79BB\u8C31\u4E86',
     ],
   };
 
@@ -899,7 +900,13 @@ function initShareButton(): void {
   const messages = shareMessages[lang] || shareMessages['en'];
 
   btn.addEventListener('click', async () => {
-    const msg = messages[Math.floor(Math.random() * messages.length)];
+    const siteUrl =
+      `${window.location.origin}${import.meta.env.BASE_URL.replace(/\/$/, '')}` ||
+      SITE_ORIGIN;
+    const msg = (messages[Math.floor(Math.random() * messages.length)] ?? '').replaceAll(
+      SITE_ORIGIN,
+      siteUrl,
+    );
     try {
       await navigator.clipboard.writeText(msg);
       const toast = document.getElementById('kbd-toast');

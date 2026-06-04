@@ -96,7 +96,7 @@ nukebg/
 │   └── styles/                        # CSS (JetBrains Mono, zero deps)
 ├── tests/                             # Vitest + happy-dom
 ├── docs/                              # Internal docs
-├── public/                            # Static assets (favicon, manifest, og-image)
+├── public/                            # Static assets (favicon, manifest, banner)
 └── dist/                              # Production build output
 ```
 

@@ -8,7 +8,7 @@ const MAIN = readFileSync(resolve(ROOT, 'src/main.ts'), 'utf8');
 
 describe('PWA manifest — install experience', () => {
   it('declares a stable id + lang + dir', () => {
-    expect(MANIFEST.id).toBe('/');
+    expect(['/', './']).toContain(MANIFEST.id);
     expect(MANIFEST.lang).toBe('en');
     expect(MANIFEST.dir).toBe('ltr');
   });
@@ -36,8 +36,8 @@ describe('PWA manifest — install experience', () => {
     expect(Array.isArray(MANIFEST.shortcuts)).toBe(true);
     expect(MANIFEST.shortcuts.length).toBeGreaterThanOrEqual(2);
     const urls = MANIFEST.shortcuts.map((s: { url: string }) => s.url);
-    expect(urls).toContain('/?action=new');
-    expect(urls).toContain('/?help=1');
+    expect(urls.some((u: string) => u.endsWith('?action=new'))).toBe(true);
+    expect(urls.some((u: string) => u.endsWith('?help=1'))).toBe(true);
     for (const s of MANIFEST.shortcuts) {
       expect(s.name).toBeTruthy();
       expect(Array.isArray(s.icons)).toBe(true);

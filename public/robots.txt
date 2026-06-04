@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://nukebg.app/sitemap.xml
+Sitemap: https://o9ll.github.io/nukebg/sitemap.xml
 
 # Static assets - no need to crawl
 Disallow: /models/
