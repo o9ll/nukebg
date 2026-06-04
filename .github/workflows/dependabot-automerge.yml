@@ -10,8 +10,7 @@ name: Dependabot auto-merge
 # itself — the version of this file on `dev` is what runs.
 
 on:
-  pull_request_target:
-    types: [opened, reopened, synchronize]
+  workflow_dispatch:
 
 permissions:
   contents: write
