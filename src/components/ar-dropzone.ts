@@ -402,33 +402,41 @@ export class ArDropzone extends HTMLElement {
 
     root.addEventListener(
       'dragenter',
-      (e) => {
-        allowDrop(e);
-        this.dropArea.classList.add('dragover');
+      (e: Event) => {
+        if (e instanceof DragEvent) {
+          allowDrop(e);
+          this.dropArea.classList.add('dragover');
+        }
       },
       dragOpts,
     );
     root.addEventListener(
       'dragover',
-      (e) => {
-        allowDrop(e);
-        this.dropArea.classList.add('dragover');
+      (e: Event) => {
+        if (e instanceof DragEvent) {
+          allowDrop(e);
+          this.dropArea.classList.add('dragover');
+        }
       },
       dragOpts,
     );
     root.addEventListener(
       'dragleave',
-      (e) => {
-        const related = e.relatedTarget as Node | null;
-        if (related && root.contains(related)) return;
-        this.dropArea.classList.remove('dragover');
+      (e: Event) => {
+        if (e instanceof DragEvent) {
+          const related = e.relatedTarget as Node | null;
+          if (related && root.contains(related)) return;
+          this.dropArea.classList.remove('dragover');
+        }
       },
       dragOpts,
     );
     root.addEventListener(
       'drop',
-      (e) => {
-        void this.onDrop(e);
+      (e: Event) => {
+        if (e instanceof DragEvent) {
+          void this.onDrop(e);
+        }
       },
       dragOpts,
     );
