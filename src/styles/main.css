@@ -1,68 +1,59 @@
-/* === Design Tokens (CSS Custom Properties) - Terminal Edition === */
+/* === Design Tokens (CSS Custom Properties) — Catppuccin Mocha === */
 :root {
-  /* Base (Terminal dark - pure black) */
-  --color-bg-primary: #1E1E2E;
-  --color-bg-secondary: #0a0a0a;
-  --color-bg-tertiary: #0d0d0d;
-  --color-bg-elevated: #111111;
+  /* Base */
+  --color-bg-primary: #1e1e2e;
+  --color-bg-secondary: #181825;
+  --color-bg-tertiary: #11111b;
+  --color-bg-elevated: #313244;
 
   /* Surface */
-  --color-surface-border: #1a3a1a;
-  --color-surface-hover: #0f2a0f;
-  --color-surface-active: #153015;
+  --color-surface-border: #45475a;
+  --color-surface-hover: #313244;
+  --color-surface-active: #585b70;
 
   /* Text */
-  --color-text-primary: #00ff41;
-  --color-text-secondary: #00dd44;
-  /* Tertiary was #008830 (≈2:1 on black, fails WCAG AA). Bumped to
-     #00b34a which still reads as the dimmest green in the palette
-     but lands at ~7.5:1 (AAA). Visual hierarchy for quiet labels /
-     timestamps is preserved via font-size + weight instead of
-     contrast. */
-  --color-text-tertiary: #00b34a;
-  --color-text-inverse: #1E1E2E;
+  --color-text-primary: #cdd6f4;
+  --color-text-secondary: #bac2de;
+  --color-text-tertiary: #a6adc8;
+  --color-text-inverse: #11111b;
 
-  /* Accent (Terminal Green) */
-  --color-accent-rgb: 0, 255, 65;
-  --color-accent-primary: #00ff41;
-  --color-accent-hover: #33ff66;
+  /* Accent */
+  --color-accent-rgb: 166, 227, 161;
+  --color-accent-primary: #a6e3a1;
+  --color-accent-hover: #89d88b;
   --color-accent-muted: rgba(var(--color-accent-rgb), 0.08);
   --color-accent-glow: rgba(var(--color-accent-rgb), 0.35);
 
-  /* Secondary accent (same green for terminal) */
-  --color-hazard: #00ff41;
+  --color-hazard: #a6e3a1;
   --color-hazard-muted: rgba(var(--color-accent-rgb), 0.08);
 
   /* Semantic */
-  --color-success: #00ff41;
-  --color-success-muted: rgba(var(--color-accent-rgb), 0.1);
-  --color-warning: #ffcc00;
-  --color-warning-muted: rgba(255, 204, 0, 0.1);
-  --color-error: #ff3131;
-  /* Was 0.12 — invisible on black. Bumped to 0.35 so error
-     callouts using this as a background read clearly while still
-     feeling "muted" versus the solid --color-error red. */
-  --color-error-muted: rgba(255, 49, 49, 0.35);
-  --color-error-border: #3a1a1a;
-  --color-info: #00ff41;
-  --color-info-muted: rgba(var(--color-accent-rgb), 0.1);
+  --color-success: #a6e3a1;
+  --color-success-muted: rgba(166, 227, 161, 0.1);
+  --color-warning: #f9e2af;
+  --color-warning-muted: rgba(249, 226, 175, 0.1);
+  --color-error: #f38ba8;
+  --color-error-muted: rgba(243, 139, 168, 0.35);
+  --color-error-border: #45475a;
+  --color-info: #89b4fa;
+  --color-info-muted: rgba(137, 180, 250, 0.1);
 
   /* Checkerboard Preview */
-  --color-checker-light: #0a0a0a;
-  --color-checker-dark: #050505;
+  --color-checker-light: #313244;
+  --color-checker-dark: #1e1e2e;
   --color-checker-size: 12px;
 
   /* Background preview swatches (editor + viewer) */
   --color-preview-white: #ffffff;
-  --color-preview-black: #1E1E2E;
+  --color-preview-black: #1e1e2e;
   --color-preview-green: #00b140;
-  --color-preview-red: #ff4444;
+  --color-preview-red: #f38ba8;
   /* Light checkerboard used inside the BG-swatch buttons (not the terminal dark checker above) */
   --color-preview-checker-light: #ffffff;
   --color-preview-checker-dark: #cccccc;
 
   /* Restore tool accent (ar-editor cursor). Exposed as rgb list so SVG data URLs can read it via getComputedStyle. */
-  --color-restore-rgb: 0, 212, 255;
+  --color-restore-rgb: 148, 226, 213;
 
   /* Typography - JetBrains Mono everywhere */
   --font-sans: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
@@ -137,7 +128,7 @@
   --z-modal: 50;
 
   /* Header bg opacity for blur */
-  --header-bg: rgba(0, 0, 0, 0.95);
+  --header-bg: rgba(30, 30, 46, 0.95);
 
   /* Terminal-specific tokens */
   --terminal-scanline-opacity: 0.03;
@@ -146,72 +137,53 @@
 }
 
 /* === Theme palettes ===
-   Override the accent + text-* tokens only. Background, surface, and
-   semantic warning/error colors stay constant so the terminal feel
-   doesn't get lost. data-theme is set on <html> by main.ts on boot
-   and persisted via localStorage. */
+   Override accent + text-* tokens. Base/surface/semantic colors stay on
+   the Mocha palette so the UI stays cohesive. data-theme is set on
+   <html> by main.ts on boot and persisted via localStorage. */
 :root[data-theme='amber'] {
-  --color-text-primary: #ff8c00;
-  --color-text-secondary: #cc7000;
-  /* Tertiary was #995300 (3.59:1 on black, fails WCAG AA). Bumped to
-     #b06400 (~4.67:1, AA pass) while keeping it dimmer than secondary
-     to preserve the primary > secondary > tertiary luminance ramp. */
-  --color-text-tertiary: #b06400;
-  --color-accent-rgb: 255, 140, 0;
-  --color-accent-primary: #ff8c00;
-  --color-accent-hover: #ffaa33;
-  --color-hazard: #ff8c00;
-  --color-surface-border: #3a2a0a;
-  --color-surface-hover: #2a1f0a;
-  --color-surface-active: #302510;
+  --color-text-primary: #fab387;
+  --color-text-secondary: #e8a070;
+  --color-text-tertiary: #c98860;
+  --color-accent-rgb: 250, 179, 135;
+  --color-accent-primary: #fab387;
+  --color-accent-hover: #f5c9a0;
+  --color-hazard: #fab387;
 }
 :root[data-theme='cyan'] {
-  --color-text-primary: #00ddff;
-  --color-text-secondary: #00aacc;
-  --color-text-tertiary: #0088aa;
-  --color-accent-rgb: 0, 221, 255;
-  --color-accent-primary: #00ddff;
-  --color-accent-hover: #33eeff;
-  --color-hazard: #00ddff;
-  --color-surface-border: #0a2a3a;
-  --color-surface-hover: #0a1f2a;
-  --color-surface-active: #102530;
+  --color-text-primary: #94e2d5;
+  --color-text-secondary: #7ec9bc;
+  --color-text-tertiary: #6aafa3;
+  --color-accent-rgb: 148, 226, 213;
+  --color-accent-primary: #94e2d5;
+  --color-accent-hover: #7fd9ca;
+  --color-hazard: #94e2d5;
 }
 :root[data-theme='magenta'] {
-  --color-text-primary: #ff33ff;
-  --color-text-secondary: #cc22cc;
-  --color-text-tertiary: #991199;
-  --color-accent-rgb: 255, 51, 255;
-  --color-accent-primary: #ff33ff;
-  --color-accent-hover: #ff66ff;
-  --color-hazard: #ff33ff;
-  --color-surface-border: #3a0a3a;
-  --color-surface-hover: #2a0a2a;
-  --color-surface-active: #301030;
+  --color-text-primary: #f5c2e7;
+  --color-text-secondary: #dba8cd;
+  --color-text-tertiary: #c08eb5;
+  --color-accent-rgb: 245, 194, 231;
+  --color-accent-primary: #f5c2e7;
+  --color-accent-hover: #f8d4ef;
+  --color-hazard: #f5c2e7;
 }
 :root[data-theme='red'] {
-  --color-text-primary: #ff3344;
-  --color-text-secondary: #cc2233;
-  --color-text-tertiary: #991122;
-  --color-accent-rgb: 255, 51, 68;
-  --color-accent-primary: #ff3344;
-  --color-accent-hover: #ff6677;
-  --color-hazard: #ff3344;
-  --color-surface-border: #3a0a0e;
-  --color-surface-hover: #2a0a0c;
-  --color-surface-active: #301010;
+  --color-text-primary: #f38ba8;
+  --color-text-secondary: #d97894;
+  --color-text-tertiary: #bf6580;
+  --color-accent-rgb: 243, 139, 168;
+  --color-accent-primary: #f38ba8;
+  --color-accent-hover: #f37799;
+  --color-hazard: #f38ba8;
 }
 :root[data-theme='yellow'] {
-  --color-text-primary: #ffee00;
-  --color-text-secondary: #ccbb00;
-  --color-text-tertiary: #998800;
-  --color-accent-rgb: 255, 238, 0;
-  --color-accent-primary: #ffee00;
-  --color-accent-hover: #ffff44;
-  --color-hazard: #ffee00;
-  --color-surface-border: #3a3a0a;
-  --color-surface-hover: #2a2a0a;
-  --color-surface-active: #303010;
+  --color-text-primary: #f9e2af;
+  --color-text-secondary: #e0c999;
+  --color-text-tertiary: #c7b083;
+  --color-accent-rgb: 249, 226, 175;
+  --color-accent-primary: #f9e2af;
+  --color-accent-hover: #ebd391;
+  --color-hazard: #f9e2af;
 }
 
 /* === Reset === */
@@ -233,7 +205,7 @@ html {
 
 body {
   font-family: var(--font-mono);
-  background: #1E1E2E;
+  background: var(--color-bg-primary);
   color: var(--color-text-primary);
   line-height: var(--leading-normal);
   min-height: 100vh;
@@ -291,7 +263,7 @@ body::after {
   left: 0;
   right: 0;
   height: 1px;
-  background: var(--color-surface-border, #1a3a1a);
+  background: var(--color-surface-border, #45475a);
   opacity: 1;
 }
 
@@ -307,7 +279,7 @@ body::after {
   left: 0;
   right: 0;
   height: 1px;
-  background: var(--color-surface-border, #1a3a1a);
+  background: var(--color-surface-border, #45475a);
   opacity: 1;
 }
 
@@ -316,9 +288,9 @@ body::after {
   position: sticky;
   top: 0;
   z-index: var(--z-sticky);
-  background: #1E1E2E;
+  background: var(--color-bg-primary);
   backdrop-filter: none;
-  border-bottom: 1px solid var(--color-surface-border, #1a3a1a);
+  border-bottom: 1px solid var(--color-surface-border, #45475a);
   height: 48px;
   display: flex;
   align-items: center;
@@ -384,9 +356,9 @@ body::after {
   font-family: var(--font-mono);
   font-size: 12px;
   color: var(--color-text-tertiary);
-  background: #000;
+  background: var(--color-bg-tertiary);
   padding: 2px 6px;
-  border: 1px solid var(--color-surface-border, #1a3a1a);
+  border: 1px solid var(--color-surface-border, #45475a);
   opacity: 0;
   transition: opacity 0.3s ease;
   pointer-events: none;
@@ -487,8 +459,8 @@ body::after {
 .main-content {
   max-width: 960px;
   margin: 0 auto;
-  border-left: 1px solid #0d1a0d;
-  border-right: 1px solid #0d1a0d;
+  border-left: 1px solid var(--color-surface-border);
+  border-right: 1px solid var(--color-surface-border);
   flex: 1 0 auto;
   width: 100%;
 }
@@ -510,14 +482,14 @@ body::after {
 
 /* === Footer === */
 .footer {
-  border-top: 1px solid var(--color-surface-border, #1a3a1a);
+  border-top: 1px solid var(--color-surface-border, #45475a);
   padding: var(--space-8) var(--space-6);
   text-align: center;
   font-family: var(--font-mono);
   font-size: var(--text-sm);
   letter-spacing: 0.05em;
   color: var(--color-text-tertiary);
-  background: #1E1E2E;
+  background: var(--color-bg-primary);
   flex-shrink: 0;
 }
 
@@ -536,7 +508,7 @@ body::after {
 
 .footer-sep {
   margin: 0 var(--space-3);
-  color: var(--color-surface-border, #1a3a1a);
+  color: var(--color-surface-border, #45475a);
 }
 
 .footer-cache-btn {
@@ -580,22 +552,22 @@ body::after {
   outline-offset: 0;
 }
 .theme-swatch[data-theme='green'] {
-  background: #00ff41;
+  background: #a6e3a1;
 }
 .theme-swatch[data-theme='amber'] {
-  background: #ff8c00;
+  background: #fab387;
 }
 .theme-swatch[data-theme='cyan'] {
-  background: #00ddff;
+  background: #94e2d5;
 }
 .theme-swatch[data-theme='magenta'] {
-  background: #ff33ff;
+  background: #f5c2e7;
 }
 .theme-swatch[data-theme='red'] {
-  background: #ff3344;
+  background: #f38ba8;
 }
 .theme-swatch[data-theme='yellow'] {
-  background: #ffee00;
+  background: #f9e2af;
 }
 .theme-swatch:hover,
 .theme-swatch:focus-visible {
@@ -604,27 +576,27 @@ body::after {
 }
 .theme-swatch[data-theme='green']:hover,
 .theme-swatch[data-theme='green']:focus-visible {
-  box-shadow: 0 0 8px #00ff41;
+  box-shadow: 0 0 8px #a6e3a1;
 }
 .theme-swatch[data-theme='amber']:hover,
 .theme-swatch[data-theme='amber']:focus-visible {
-  box-shadow: 0 0 8px #ff8c00;
+  box-shadow: 0 0 8px #fab387;
 }
 .theme-swatch[data-theme='cyan']:hover,
 .theme-swatch[data-theme='cyan']:focus-visible {
-  box-shadow: 0 0 8px #00ddff;
+  box-shadow: 0 0 8px #94e2d5;
 }
 .theme-swatch[data-theme='magenta']:hover,
 .theme-swatch[data-theme='magenta']:focus-visible {
-  box-shadow: 0 0 8px #ff33ff;
+  box-shadow: 0 0 8px #f5c2e7;
 }
 .theme-swatch[data-theme='red']:hover,
 .theme-swatch[data-theme='red']:focus-visible {
-  box-shadow: 0 0 8px #ff3344;
+  box-shadow: 0 0 8px #f38ba8;
 }
 .theme-swatch[data-theme='yellow']:hover,
 .theme-swatch[data-theme='yellow']:focus-visible {
-  box-shadow: 0 0 8px #ffee00;
+  box-shadow: 0 0 8px #f9e2af;
 }
 .theme-swatch[aria-checked='true'] {
   outline: 1px solid var(--color-accent-primary);
@@ -705,8 +677,8 @@ body::after {
   position: fixed;
   bottom: var(--space-6);
   right: var(--space-6);
-  background: #0a0a0a;
-  border: 1px solid var(--color-surface-border, #1a3a1a);
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-surface-border, #45475a);
   border-radius: 0;
   padding: var(--space-3) var(--space-4);
   font-size: var(--text-sm);
@@ -733,7 +705,7 @@ body::after {
 .kbd-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.75);
+  background: rgba(17, 17, 27, 0.75);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -744,9 +716,9 @@ body::after {
   display: none;
 }
 .kbd-overlay-card {
-  background: #0a0a0a;
-  border: 1px solid var(--color-accent-primary, #00ff41);
-  color: var(--color-accent-primary, #00ff41);
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-accent-primary, #a6e3a1);
+  color: var(--color-accent-primary, #a6e3a1);
   font-family: var(--font-mono);
   font-size: var(--text-sm);
   padding: var(--space-5) var(--space-5) var(--space-4);
@@ -786,9 +758,9 @@ body::after {
 .kbd-overlay-list kbd {
   display: inline-block;
   padding: 1px 6px;
-  border: 1px solid var(--color-surface-border, #1a3a1a);
+  border: 1px solid var(--color-surface-border, #45475a);
   border-radius: 2px;
-  background: #000;
+  background: var(--color-bg-tertiary);
   font-family: var(--font-mono);
   font-size: 0.85em;
   line-height: 1.2;
@@ -796,8 +768,8 @@ body::after {
 .kbd-overlay-close {
   margin-top: var(--space-4);
   background: transparent;
-  border: 1px solid var(--color-accent-primary, #00ff41);
-  color: var(--color-accent-primary, #00ff41);
+  border: 1px solid var(--color-accent-primary, #a6e3a1);
+  color: var(--color-accent-primary, #a6e3a1);
   font-family: var(--font-mono);
   font-size: var(--text-sm);
   padding: var(--space-2) var(--space-4);
@@ -805,8 +777,8 @@ body::after {
 }
 .kbd-overlay-close:hover,
 .kbd-overlay-close:focus-visible {
-  background: var(--color-accent-primary, #00ff41);
-  color: #000;
+  background: var(--color-accent-primary, #a6e3a1);
+  color: var(--color-text-inverse);
   outline: none;
 }
 
