@@ -1,7 +1,7 @@
 /* === Design Tokens (CSS Custom Properties) - Terminal Edition === */
 :root {
   /* Base (Terminal dark - pure black) */
-  --color-bg-primary: #000000;
+  --color-bg-primary: #1E1E2E;
   --color-bg-secondary: #0a0a0a;
   --color-bg-tertiary: #0d0d0d;
   --color-bg-elevated: #111111;
@@ -20,7 +20,7 @@
      timestamps is preserved via font-size + weight instead of
      contrast. */
   --color-text-tertiary: #00b34a;
-  --color-text-inverse: #000000;
+  --color-text-inverse: #1E1E2E;
 
   /* Accent (Terminal Green) */
   --color-accent-rgb: 0, 255, 65;
@@ -54,7 +54,7 @@
 
   /* Background preview swatches (editor + viewer) */
   --color-preview-white: #ffffff;
-  --color-preview-black: #000000;
+  --color-preview-black: #1E1E2E;
   --color-preview-green: #00b140;
   --color-preview-red: #ff4444;
   /* Light checkerboard used inside the BG-swatch buttons (not the terminal dark checker above) */
@@ -233,7 +233,7 @@ html {
 
 body {
   font-family: var(--font-mono);
-  background: #000000;
+  background: #1E1E2E;
   color: var(--color-text-primary);
   line-height: var(--leading-normal);
   min-height: 100vh;
@@ -316,7 +316,7 @@ body::after {
   position: sticky;
   top: 0;
   z-index: var(--z-sticky);
-  background: #000000;
+  background: #1E1E2E;
   backdrop-filter: none;
   border-bottom: 1px solid var(--color-surface-border, #1a3a1a);
   height: 48px;
@@ -517,7 +517,7 @@ body::after {
   font-size: var(--text-sm);
   letter-spacing: 0.05em;
   color: var(--color-text-tertiary);
-  background: #000000;
+  background: #1E1E2E;
   flex-shrink: 0;
 }
 

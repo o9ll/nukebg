@@ -737,7 +737,7 @@ export class ArEditor extends HTMLElement {
             <span id="ed-bg-label">${t('editor.bg')}</span>
             <div class="bg-btn bg-checker active" data-bg="checker" title="${t('bg.checkerboard')}"></div>
             <div class="bg-btn" style="background:var(--color-preview-white)" data-bg="#ffffff" title="${t('bg.white')}"></div>
-            <div class="bg-btn" style="background:var(--color-preview-black)" data-bg="#000000" title="${t('bg.black')}"></div>
+            <div class="bg-btn" style="background:var(--color-preview-black)" data-bg="#1E1E2E" title="${t('bg.black')}"></div>
             <div class="bg-btn" style="background:var(--color-preview-green)" data-bg="#00b140" title="${t('bg.green')}"></div>
             <div class="bg-btn" style="background:var(--color-preview-red)" data-bg="#ff4444" title="${t('bg.red')}"></div>
           </div>
